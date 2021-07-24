@@ -9,9 +9,9 @@
                 @setSelectedItemIndex="setSelectedItemIndex"
             />
             <v-main>
-                <!--            <v-container fluid>-->
-                <router-view />
-                <!--            </v-container>-->
+                <v-container>
+                    <router-view />
+                </v-container>
             </v-main>
 
             <Footer />
