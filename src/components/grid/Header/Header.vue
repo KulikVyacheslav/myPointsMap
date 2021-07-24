@@ -8,6 +8,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import defaultPageName from '@/components/grid/Header/constants';
 
 export default Vue.extend({
     name: 'Header',
@@ -15,8 +16,8 @@ export default Vue.extend({
         toggleNavBar: { type: Function, required: true }
     },
     computed: {
-        pageName() {
-            return this.$route.name;
+        pageName(): string {
+            return this.$route.name || defaultPageName;
         }
     }
 });

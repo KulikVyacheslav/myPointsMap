@@ -43,7 +43,7 @@ export default Vue.extend({
     }),
     computed: {
         open: {
-            get() {
+            get(): boolean {
                 return this.isOpen;
             },
             set(value) {
@@ -51,7 +51,7 @@ export default Vue.extend({
             }
         },
         selectedItem: {
-            get() {
+            get(): number {
                 return this.selectedItemIndex;
             },
             set(value) {

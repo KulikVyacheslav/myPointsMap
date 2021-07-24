@@ -35,13 +35,13 @@ export default Vue.extend({
     },
     data: () => ({
         navBarIsOpen: false,
-        selectedItemIndex: 0
+        selectedItemIndex: undefined
     }),
     methods: {
         toggleNavBar() {
             this.navBarIsOpen = !this.navBarIsOpen;
         },
-        setSelectedItemIndex(value) {
+        setSelectedItemIndex(value: number | undefined) {
             this.selectedItemIndex = value;
         }
     },
