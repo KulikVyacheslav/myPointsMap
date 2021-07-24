@@ -1,5 +1,5 @@
 <template>
-    <div></div>
+    <div>Test Map</div>
 </template>
 
 <script lang="ts">

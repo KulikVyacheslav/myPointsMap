@@ -5,20 +5,32 @@ import About from '@/views/About/About.vue';
 
 Vue.use(VueRouter);
 
+export const routesNames = {
+    home: {
+        path: '/',
+        name: 'Home'
+    },
+    map: {
+        path: '/map',
+        name: 'Map'
+    },
+    about: {
+        path: '/about',
+        name: 'About'
+    }
+};
+
 const routes: Array<RouteConfig> = [
     {
-        path: '/',
-        name: 'Home',
+        ...routesNames.home,
         redirect: { name: 'Map' }
     },
     {
-        path: '/map',
-        name: 'Map',
+        ...routesNames.map,
         component: Map
     },
     {
-        path: '/about',
-        name: 'About',
+        ...routesNames.about,
         component: About
     }
 ];
@@ -28,5 +40,17 @@ const router = new VueRouter({
     base: process.env.BASE_URL,
     routes
 });
+
+export const goToPath = {
+    goToMap: (): void => {
+        router.push(routesNames.map.path).catch(() => {});
+    },
+    goToAbout: (): void => {
+        router.push(routesNames.about.path).catch(() => {});
+    },
+    goToHome: (): void => {
+        router.push(routesNames.home.path).catch(() => {});
+    }
+};
 
 export default router;
