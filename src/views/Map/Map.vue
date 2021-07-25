@@ -1,13 +1,18 @@
 <template>
-    <div>Test Map</div>
+    <v-row
+        ><v-col><YandexMap /></v-col
+    ></v-row>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import YandexMap from '@/components/blocks/YandexMap/YandexMap.vue';
 
 export default Vue.extend({
     name: 'Map',
-    props: {}
+    components: {
+        YandexMap
+    }
 });
 </script>
 
