@@ -3,5 +3,7 @@ export const SET_ADD_MODE = 'setAddMode';
 export const TOGGLE_LOADING = 'toggleLoading';
 export const SET_LOADING = 'setLoading';
 export const ADD_COORDINATES = 'addCoordinates';
+export const SET_COORDINATES = 'setCoordinates';
 export const DELETE_COORDINATES = 'deleteCoordinates';
 export const SET_SELECTED_MARKER_ID = 'setSelectedMarkerId';
+export const SET_ERROR = 'setError';

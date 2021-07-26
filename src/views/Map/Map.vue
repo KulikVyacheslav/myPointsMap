@@ -17,6 +17,9 @@ import Vue from 'vue';
 import YandexMap from '@/components/blocks/YandexMap/YandexMap.vue';
 import CoordinateList from '@/components/blocks/CoordinateList/CoordinateList.vue';
 import AddButtonBlock from '@/components/blocks/AddButtonBlock/AddButtonBlock.vue';
+import { getTypeOfModule } from '@/helpers/usefulFunction';
+import { MAP_MODULE } from '@/store/modulesName';
+import { ASYNC_GET_ALL_COORDINATES } from '@/store/modules/action-types';
 
 export default Vue.extend({
     name: 'Map',
@@ -24,6 +27,9 @@ export default Vue.extend({
         YandexMap,
         CoordinateList,
         AddButtonBlock
+    },
+    mounted() {
+        this.$store.dispatch(getTypeOfModule(MAP_MODULE, ASYNC_GET_ALL_COORDINATES));
     }
 });
 </script>

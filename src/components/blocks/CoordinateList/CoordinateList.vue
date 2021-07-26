@@ -23,9 +23,10 @@
 import Vue from 'vue';
 import { mapGetters, mapState } from 'vuex';
 import { MAP_MODULE } from '@/store/modulesName';
-import { DELETE_COORDINATES, SET_SELECTED_MARKER_ID } from '@/store/modules/mutation-types';
+import { SET_SELECTED_MARKER_ID } from '@/store/modules/mutation-types';
 import { getTypeOfModule } from '@/helpers/usefulFunction';
 import { applicationColorTheme } from '@/constants/global';
+import { ASYNC_DELETE_COORDINATES } from '@/store/modules/action-types';
 
 export default Vue.extend({
     name: 'CoordinateList',
@@ -34,7 +35,7 @@ export default Vue.extend({
     }),
     methods: {
         onDeleteCoordinates(id: string) {
-            this.$store.commit(getTypeOfModule(MAP_MODULE, DELETE_COORDINATES), id);
+            this.$store.dispatch(getTypeOfModule(MAP_MODULE, ASYNC_DELETE_COORDINATES), id);
         },
         onMarkerChange(index: number | undefined) {
             this.$store.commit(

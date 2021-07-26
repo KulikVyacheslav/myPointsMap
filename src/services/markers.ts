@@ -46,3 +46,16 @@ export const getMarkerFromLocalStorage = ({ id }: API.GetMarkerByIdDto): Promise
             }
         }, backendDelayMock);
     });
+
+export const getMarkersFromLocalStorage = (): Promise<Array<API.Marker>> =>
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const allMarkers = getAllMarkers();
+
+            if (Array.isArray(allMarkers)) {
+                resolve(allMarkers);
+            } else {
+                reject(new Error('Непредвиденная ошибка'));
+            }
+        }, backendDelayMock);
+    });
