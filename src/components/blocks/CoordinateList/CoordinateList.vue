@@ -2,7 +2,18 @@
     <v-card class="mx-auto" width="100%" height="100%" tile>
         <v-list flat>
             <v-subheader>Координаты</v-subheader>
-            <v-list-item-group :value="getSelectedMarkerIndex" @change="onMarkerChange" :color="applicationColorTheme">
+            <v-skeleton-loader
+                v-if="isLoading"
+                class="mx-auto"
+                max-width="300"
+                type="list-item, list-item-three-line"
+            />
+            <v-list-item-group
+                v-else
+                :value="getSelectedMarkerIndex"
+                @change="onMarkerChange"
+                :color="applicationColorTheme"
+            >
                 <v-list-item v-for="{ coordinates, id } in markers" :key="id">
                     <v-list-item-icon>
                         <v-icon>mdi-map-marker</v-icon>
@@ -45,7 +56,7 @@ export default Vue.extend({
         }
     },
     computed: {
-        ...mapState('mapModule', ['markers']),
+        ...mapState('mapModule', ['markers', 'isLoading']),
         ...mapGetters('mapModule', ['getSelectedMarkerIndex'])
     }
 });
