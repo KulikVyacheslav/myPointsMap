@@ -39,7 +39,7 @@ const actions = <ActionTree<MapModuleState, RootState>>{};
 
 const getters = <GetterTree<MapModuleState, RootState>>{
     addButtonText(state) {
-        return state.isAddMode ? 'Отключить' : 'Добавить метку';
+        return state.isAddMode ? 'mdi-check' : 'mdi-plus';
     },
     getSelectedMarkerIndex({ markers, selectedMarkerId }) {
         return selectedMarkerId ? markers.findIndex(({ id }) => id === selectedMarkerId) : undefined;
