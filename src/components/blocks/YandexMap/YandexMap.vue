@@ -13,7 +13,7 @@
                 :marker-id="id"
                 marker-type="placemark"
                 :coords="coordinates"
-                :balloon="{ body: `Метка №${id}` }"
+                :balloon="{ body: `Метка: ${id}` }"
             ></ymap-marker>
         </yandex-map>
         <button @click="onChangeMode">{{ addButtonText }}</button>
@@ -25,6 +25,10 @@ import Vue from 'vue';
 import { mapGetters, mapState } from 'vuex';
 import { yandexMap, ymapMarker } from 'vue-yandex-maps';
 import { Marker } from '@/types/data';
+import { nanoid } from 'nanoid';
+import { getTypeOfModule } from '@/helpers/usefulFunction';
+import { ADD_COORDINATES, TOGGLE_ADD_MODE } from '@/store/modules/mutation-types';
+import { MAP_MODULE } from '@/store/modulesName';
 import settings from './constants';
 
 export default Vue.extend({
@@ -36,20 +40,17 @@ export default Vue.extend({
     methods: {
         onMapClick(e: { get: (type: string) => [number, number] }) {
             if (this.isAddMode) {
-                this.$store.commit('mapModule/addCoordinate', {
+                this.$store.commit(getTypeOfModule(MAP_MODULE, ADD_COORDINATES), {
                     coordinates: e.get('coords'),
-                    id: Math.random().toString()
+                    id: nanoid()
                 } as Marker);
             }
         },
         onChangeMode() {
             const cursorType = this.isAddMode ? 'grab' : 'arrow';
             this.$refs.map.myMap.cursors.push(cursorType);
-            this.$store.commit('mapModule/toggleAddMode');
+            this.$store.commit(getTypeOfModule(MAP_MODULE, TOGGLE_ADD_MODE));
         }
-    },
-    updated() {
-        console.log(this.getSelectedMarkerCoordinates, 'addButtonText');
     },
     computed: {
         ...mapState('mapModule', ['isAddMode', 'markers', 'selectedMarkerId']),

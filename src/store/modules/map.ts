@@ -1,27 +1,36 @@
-import { GetterTree, MutationTree, ActionTree, Module } from 'vuex';
+import { ActionTree, GetterTree, Module, MutationTree } from 'vuex';
 import { MapModuleState, RootState } from '@/types/store';
 import { Marker } from '@/types/data';
+import {
+    ADD_COORDINATES,
+    DELETE_COORDINATES,
+    SET_ADD_MODE,
+    SET_LOADING,
+    SET_SELECTED_MARKER_ID,
+    TOGGLE_ADD_MODE,
+    TOGGLE_LOADING
+} from '@/store/modules/mutation-types';
 
 const mutations = <MutationTree<MapModuleState>>{
-    toggleAddMode(state) {
+    [TOGGLE_ADD_MODE]: state => {
         state.isAddMode = !state.isAddMode;
     },
-    setAddMode(state, payload: boolean) {
+    [SET_ADD_MODE]: (state, payload: boolean) => {
         state.isAddMode = payload;
     },
-    toggleLoading(state) {
+    [TOGGLE_LOADING]: state => {
         state.isLoading = !state.isLoading;
     },
-    setLoading(state, payload: boolean) {
+    [SET_LOADING]: (state, payload: boolean) => {
         state.isLoading = payload;
     },
-    addCoordinate(state, payload: Marker) {
+    [ADD_COORDINATES]: (state, payload: Marker) => {
         state.markers = [...state.markers, payload];
     },
-    deleteCoordinate(state, payload: string) {
+    [DELETE_COORDINATES]: (state, payload: string) => {
         state.markers = state.markers.filter(({ id }) => id !== payload);
     },
-    setSelectedMarkerId(state, payload: string | undefined) {
+    [SET_SELECTED_MARKER_ID]: (state, payload: string | undefined) => {
         state.selectedMarkerId = payload;
     }
 };
@@ -48,7 +57,7 @@ const getters = <GetterTree<MapModuleState, RootState>>{
 const mapModule: Module<MapModuleState, RootState> = {
     namespaced: true,
     state: {
-        markers: [{ coordinates: [56.827064, 60.59442], id: 'asasd' }],
+        markers: [],
         isAddMode: false,
         isLoading: false,
         selectedMarkerId: undefined

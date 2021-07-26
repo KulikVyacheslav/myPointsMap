@@ -1,6 +1,6 @@
 <template>
     <v-footer app padless dark>
-        <v-card flat tile class="deep-purple accent-4 white--text text-center" width="100%">
+        <v-card flat tile :class="[applicationColorTheme, 'white--text text-center']" width="100%">
             <v-card-text>
                 <v-btn v-for="{ icon, link } in socialIcons" :key="icon" class="mx-4 white--text" icon>
                     <a :href="link" target="_blank">
@@ -25,12 +25,14 @@
 <script lang="ts">
 import Vue from 'vue';
 import socialIcons from '@/components/grid/Footer/constants';
+import { applicationColorTheme } from '@/constants/global';
 
 export default Vue.extend({
     name: 'Footer',
     data: () => ({
         socialIcons,
-        currentYear: new Date().getFullYear()
+        currentYear: new Date().getFullYear(),
+        applicationColorTheme
     })
 });
 </script>

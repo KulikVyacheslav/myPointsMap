@@ -9,7 +9,7 @@
         </v-list-item>
         <v-list-item>
             <v-list-item-content>
-                <v-list-item-title class="text-h6 text-center">My points on the map</v-list-item-title>
+                <v-list-item-title class="text-h6 text-center">{{ applicationName }}</v-list-item-title>
             </v-list-item-content>
         </v-list-item>
 
@@ -31,6 +31,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import navigationItems from '@/components/grid/Nav/constants';
+import { applicationName } from '@/constants/global';
 
 export default Vue.extend({
     name: 'Nav',
@@ -39,7 +40,8 @@ export default Vue.extend({
         selectedItemIndex: { required: true }
     },
     data: () => ({
-        navigationItems
+        navigationItems,
+        applicationName
     }),
     computed: {
         open: {
