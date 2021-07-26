@@ -30,7 +30,7 @@ export default Vue.extend({
         console.log(this.$store.state.mapModule.selectedMarkerId);
     },
     computed: {
-        ...mapState({ markers: state => state.mapModule.markers }),
+        ...mapState('mapModule', ['markers']),
         selectedItem: {
             get() {
                 return this.$store.getters.getSelectedMarkerIndex;

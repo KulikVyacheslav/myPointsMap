@@ -34,7 +34,7 @@ export default Vue.extend({
         settings
     }),
     methods: {
-        onMapClick(e) {
+        onMapClick(e: { get: (type: string) => [number, number] }) {
             if (this.isAddMode) {
                 this.$store.commit('mapModule/addCoordinate', {
                     coordinates: e.get('coords'),
@@ -52,11 +52,7 @@ export default Vue.extend({
         console.log(this.getSelectedMarkerCoordinates, 'addButtonText');
     },
     computed: {
-        ...mapState({
-            isAddMode: state => state.mapModule.isAddMode,
-            markers: state => state.mapModule.markers,
-            selectedMarkerId: state => state.mapModule.selectedMarkerId
-        }),
+        ...mapState('mapModule', ['isAddMode', 'markers', 'selectedMarkerId']),
         ...mapGetters('mapModule', ['getSelectedMarkerCoordinates', 'addButtonText'])
     }
 });
