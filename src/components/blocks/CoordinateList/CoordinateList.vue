@@ -19,7 +19,7 @@
                         <v-icon>mdi-map-marker</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
-                        <v-list-item-title v-text="`${coordinates[0]} ${coordinates[1]}`"></v-list-item-title>
+                        <v-list-item-title v-text="getCoordinatesTitle(coordinates)"></v-list-item-title>
                     </v-list-item-content>
                     <v-btn icon @click.stop="onDeleteCoordinates(id)">
                         <v-icon color="grey lighten-1">mdi-delete</v-icon>
@@ -38,6 +38,7 @@ import { SET_SELECTED_MARKER_ID } from '@/store/modules/mutation-types';
 import { getTypeOfModule } from '@/helpers/usefulFunction';
 import { applicationColorTheme } from '@/constants/global';
 import { ASYNC_DELETE_COORDINATES } from '@/store/modules/action-types';
+import { getCoordinatesTitle } from './constants';
 
 export default Vue.extend({
     name: 'CoordinateList',
@@ -53,7 +54,8 @@ export default Vue.extend({
                 getTypeOfModule(MAP_MODULE, SET_SELECTED_MARKER_ID),
                 index !== undefined ? this.markers[index].id : undefined
             );
-        }
+        },
+        getCoordinatesTitle
     },
     computed: {
         ...mapState('mapModule', ['markers', 'isLoading']),

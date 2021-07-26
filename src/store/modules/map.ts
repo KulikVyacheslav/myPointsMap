@@ -53,7 +53,7 @@ const mutations = <MutationTree<MapModuleState>>{
 const actions = <ActionTree<MapModuleState, RootState>>{
     [ASYNC_ADD_COORDINATES]: async ({ commit }, payload: Marker) => {
         try {
-            commit(TOGGLE_LOADING);
+            commit(SET_LOADING, true);
             const addedMarker = await API.map.addMarker(payload);
             commit(ADD_COORDINATES, addedMarker);
         } catch (error) {
@@ -65,7 +65,7 @@ const actions = <ActionTree<MapModuleState, RootState>>{
     },
     [ASYNC_GET_ALL_COORDINATES]: async ({ commit }) => {
         try {
-            commit(TOGGLE_LOADING);
+            commit(SET_LOADING, true);
             const allMarkers = await API.map.getAllMarkers();
             commit(SET_COORDINATES, allMarkers);
         } catch (error) {
@@ -77,7 +77,7 @@ const actions = <ActionTree<MapModuleState, RootState>>{
     },
     [ASYNC_DELETE_COORDINATES]: async ({ commit }, id: string) => {
         try {
-            commit(TOGGLE_LOADING);
+            commit(SET_LOADING, true);
             await API.map.deleteMarkerByID({ id });
             commit(DELETE_COORDINATES, id);
         } catch (error) {

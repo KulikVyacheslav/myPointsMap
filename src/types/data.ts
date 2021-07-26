@@ -1,4 +1,5 @@
 export type Marker = API.Marker;
+export type Coordinates = API.Coordinates;
 
 export type ErrorType = {
     isError: boolean;
