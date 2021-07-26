@@ -1,4 +1,1 @@
-export interface Marker {
-    id: string;
-    coordinates: [number, number];
-}
+export type Marker = API.Marker;

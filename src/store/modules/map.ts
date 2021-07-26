@@ -10,6 +10,7 @@ import {
     TOGGLE_ADD_MODE,
     TOGGLE_LOADING
 } from '@/store/modules/mutation-types';
+import API from '@/api';
 
 const mutations = <MutationTree<MapModuleState>>{
     [TOGGLE_ADD_MODE]: state => {
@@ -62,4 +63,5 @@ const mapModule: Module<MapModuleState, RootState> = {
     getters
 };
 
+API.map.deleteMarkerByID({ id: 'asdad' });
 export default mapModule;
