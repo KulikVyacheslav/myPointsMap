@@ -45,11 +45,6 @@ const getters = <GetterTree<MapModuleState, RootState>>{
         return selectedMarkerId ? markers.findIndex(({ id }) => id === selectedMarkerId) : undefined;
     },
     getSelectedMarkerCoordinates({ markers, selectedMarkerId }) {
-        console.log(
-            'here',
-            selectedMarkerId,
-            markers.find(({ id }) => id === selectedMarkerId)
-        );
         return selectedMarkerId ? markers.find(({ id }) => id === selectedMarkerId)?.coordinates : undefined;
     }
 };

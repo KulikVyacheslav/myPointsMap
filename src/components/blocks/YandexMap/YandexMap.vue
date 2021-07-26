@@ -13,6 +13,7 @@
             marker-type="placemark"
             :coords="coordinates"
             :balloon="{ body: `Метка: ${id}` }"
+            @click="onMarkerClick(id)"
         ></ymap-marker>
     </yandex-map>
 </template>
@@ -24,7 +25,7 @@ import { yandexMap, ymapMarker } from 'vue-yandex-maps';
 import { Marker } from '@/types/data';
 import { nanoid } from 'nanoid';
 import { getTypeOfModule } from '@/helpers/usefulFunction';
-import { ADD_COORDINATES } from '@/store/modules/mutation-types';
+import { ADD_COORDINATES, SET_SELECTED_MARKER_ID } from '@/store/modules/mutation-types';
 import { MAP_MODULE } from '@/store/modulesName';
 import settings from './constants';
 
@@ -42,6 +43,9 @@ export default Vue.extend({
                     id: nanoid()
                 } as Marker);
             }
+        },
+        onMarkerClick(id: string) {
+            this.$store.commit(getTypeOfModule(MAP_MODULE, SET_SELECTED_MARKER_ID), id);
         }
     },
     computed: {
