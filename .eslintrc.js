@@ -19,8 +19,7 @@ module.exports = {
         'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         '@typescript-eslint/no-empty-function': 'off'
     },
-    globals:
-      { ymaps: true },
+    globals: { ymaps: true },
     overrides: [
         {
             files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/**/*.spec.{j,t}s?(x)'],

@@ -1,4 +1,4 @@
-# my-map-points
+# My point on the Map
 
 ## Project setup
 ```
@@ -25,5 +25,12 @@ yarn test:unit
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+##В проекте использовались библиотеки:
+* [vue](https://vuejs.org/)
+* [vuex](https://vuex.vuejs.org/)
+* [vue-router](https://router.vuejs.org/)
+* [vue-yandex-maps](https://vue-yandex-maps.github.io/)
+* [vuetify](https://vuetifyjs.com/en/)
+* [nanoid](https://github.com/ai/nanoid)
+
