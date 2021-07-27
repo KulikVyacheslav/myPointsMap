@@ -1,5 +1,7 @@
+$map-height: 600px;
+
 .yandex-map-container {
-  height: 600px;
+  height: $map-height;
 }
 
 .add-button-container {
@@ -9,7 +11,12 @@
   justify-content: flex-end;
 }
 
-@media all and (max-width: 900px)  {
+.coordinates-container {
+  height: $map-height;
+  overflow: scroll;
+}
+
+@media all and (max-width: 960px)  {
   .coordinates-container {
     height: 300px;
     overflow: scroll;

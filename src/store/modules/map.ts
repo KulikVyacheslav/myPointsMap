@@ -62,7 +62,7 @@ const actions = <ActionTree<MapModuleState, RootState>>{
             const errorMessage = error?.message;
             commit(SET_ERROR, { isError: true, message: errorMessage });
         } finally {
-            commit(TOGGLE_LOADING);
+            commit(SET_LOADING, false);
         }
     },
     [ASYNC_GET_ALL_COORDINATES]: async ({ commit }, id?: string) => {
@@ -77,7 +77,7 @@ const actions = <ActionTree<MapModuleState, RootState>>{
             const errorMessage = error?.message;
             commit(SET_ERROR, { isError: true, message: errorMessage });
         } finally {
-            commit(TOGGLE_LOADING);
+            commit(SET_LOADING, false);
         }
     },
     [ASYNC_DELETE_COORDINATES]: async ({ commit }, id: string) => {
@@ -89,7 +89,7 @@ const actions = <ActionTree<MapModuleState, RootState>>{
             const errorMessage = error?.message;
             commit(SET_ERROR, { isError: true, message: errorMessage });
         } finally {
-            commit(TOGGLE_LOADING);
+            commit(SET_LOADING, false);
         }
     },
     [ASYNC_GET_COORDINATES_BY_ID]: async (_, id: string) =>
