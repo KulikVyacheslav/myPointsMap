@@ -23,7 +23,7 @@ export const routesNames = {
 const routes: Array<RouteConfig> = [
     {
         ...routesNames.home,
-        redirect: { name: 'Map' }
+        redirect: { name: routesNames.map.name }
     },
     {
         ...routesNames.map,
