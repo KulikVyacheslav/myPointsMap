@@ -1,12 +1,14 @@
 import { shallowMount } from '@vue/test-utils';
-import HelloWorld from '@/components/HelloWorld.vue';
+import TextBlock from '@/components/common/typography/TextBlock/TextBlock.vue';
 
-describe('HelloWorld.vue', () => {
-    it('renders props.msg when passed', () => {
-        const msg = 'new message';
-        const wrapper = shallowMount(HelloWorld, {
-            propsData: { msg }
+describe('TextBlock.vue', () => {
+    it('Render slot for TextBlock', () => {
+        const slotMessage = 'Slot message';
+        const wrapper = shallowMount(TextBlock, {
+            slots: {
+                default: slotMessage
+            }
         });
-        expect(wrapper.text()).toMatch(msg);
+        expect(wrapper.text()).toMatch(slotMessage);
     });
 });
