@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import navigationItems from '@/components/grid/Nav/constants';
+import { navigationItems } from '@/components/grid/Nav/constants';
 import { applicationName } from '@/constants/global';
 
 export default Vue.extend({

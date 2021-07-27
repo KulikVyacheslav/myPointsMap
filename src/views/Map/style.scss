@@ -8,3 +8,11 @@
   flex-direction: row;
   justify-content: flex-end;
 }
+
+@media all and (max-width: 900px)  {
+  .coordinates-container {
+    height: 300px;
+    overflow: scroll;
+  }
+}
+

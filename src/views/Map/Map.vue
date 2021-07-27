@@ -2,8 +2,8 @@
     <v-row
         ><v-col cols="12"
             ><v-row
-                ><v-col md="3"><CoordinateList /></v-col
-                ><v-col md="9" class="yandex-map-container"><YandexMap /></v-col> </v-row
+                ><v-col md="3" cols="12" class="coordinates-container"><CoordinateList /></v-col
+                ><v-col md="9" cols="12" class="yandex-map-container"><YandexMap /></v-col> </v-row
         ></v-col>
         <v-col cols="12" align-self="end"
             ><div class="add-button-container">

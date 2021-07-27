@@ -1,5 +1,5 @@
 <template>
-    <v-card class="mx-auto" width="100%" height="100%" tile>
+    <v-card class="mx-auto coordinates" width="100%" tile>
         <v-list flat>
             <v-subheader>Координаты</v-subheader>
             <v-skeleton-loader
@@ -63,4 +63,6 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@import 'style';
+</style>
