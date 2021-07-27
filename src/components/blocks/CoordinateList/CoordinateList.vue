@@ -34,10 +34,9 @@
 import Vue from 'vue';
 import { mapGetters, mapState } from 'vuex';
 import { MAP_MODULE } from '@/store/modulesName';
-import { SET_SELECTED_MARKER_ID } from '@/store/modules/mutation-types';
 import { getTypeOfModule } from '@/helpers/usefulFunction';
 import { applicationColorTheme } from '@/constants/global';
-import { ASYNC_DELETE_COORDINATES } from '@/store/modules/action-types';
+import { ASYNC_DELETE_COORDINATES, ASYNC_SET_SELECTED_MARKER_ID } from '@/store/modules/action-types';
 import { getCoordinatesTitle } from './constants';
 
 export default Vue.extend({
@@ -50,8 +49,8 @@ export default Vue.extend({
             this.$store.dispatch(getTypeOfModule(MAP_MODULE, ASYNC_DELETE_COORDINATES), id);
         },
         onMarkerChange(index: number | undefined) {
-            this.$store.commit(
-                getTypeOfModule(MAP_MODULE, SET_SELECTED_MARKER_ID),
+            this.$store.dispatch(
+                getTypeOfModule(MAP_MODULE, ASYNC_SET_SELECTED_MARKER_ID),
                 index !== undefined ? this.markers[index].id : undefined
             );
         },

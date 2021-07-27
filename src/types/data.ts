@@ -9,3 +9,7 @@ export type ErrorType = {
 export interface ErrorInterface {
     error: ErrorType;
 }
+
+export interface MapQueryParameters {
+    id?: string;
+}

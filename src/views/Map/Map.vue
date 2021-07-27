@@ -20,6 +20,7 @@ import AddButtonBlock from '@/components/blocks/AddButtonBlock/AddButtonBlock.vu
 import { getTypeOfModule } from '@/helpers/usefulFunction';
 import { MAP_MODULE } from '@/store/modulesName';
 import { ASYNC_GET_ALL_COORDINATES } from '@/store/modules/action-types';
+import { MapQueryParameters } from '@/types/data';
 
 export default Vue.extend({
     name: 'Map',
@@ -29,7 +30,8 @@ export default Vue.extend({
         AddButtonBlock
     },
     mounted() {
-        this.$store.dispatch(getTypeOfModule(MAP_MODULE, ASYNC_GET_ALL_COORDINATES));
+        const { id } = this.$route.query as MapQueryParameters;
+        this.$store.dispatch(getTypeOfModule(MAP_MODULE, ASYNC_GET_ALL_COORDINATES), id);
     }
 });
 </script>

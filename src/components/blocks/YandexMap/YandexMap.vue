@@ -25,9 +25,8 @@ import { yandexMap, ymapMarker } from 'vue-yandex-maps';
 import { Marker } from '@/types/data';
 import { nanoid } from 'nanoid';
 import { getTypeOfModule } from '@/helpers/usefulFunction';
-import { SET_SELECTED_MARKER_ID } from '@/store/modules/mutation-types';
 import { MAP_MODULE } from '@/store/modulesName';
-import { ASYNC_ADD_COORDINATES } from '@/store/modules/action-types';
+import { ASYNC_ADD_COORDINATES, ASYNC_SET_SELECTED_MARKER_ID } from '@/store/modules/action-types';
 import settings from './constants';
 
 export default Vue.extend({
@@ -46,7 +45,7 @@ export default Vue.extend({
             }
         },
         onMarkerClick(id: string) {
-            this.$store.commit(getTypeOfModule(MAP_MODULE, SET_SELECTED_MARKER_ID), id);
+            this.$store.dispatch(getTypeOfModule(MAP_MODULE, ASYNC_SET_SELECTED_MARKER_ID), id);
         }
     },
     computed: {

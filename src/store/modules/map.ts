@@ -16,9 +16,11 @@ import {
     ASYNC_ADD_COORDINATES,
     ASYNC_DELETE_COORDINATES,
     ASYNC_GET_ALL_COORDINATES,
-    ASYNC_GET_COORDINATES_BY_ID
+    ASYNC_GET_COORDINATES_BY_ID,
+    ASYNC_SET_SELECTED_MARKER_ID
 } from '@/store/modules/action-types';
 import API from '@/api';
+import router from '@/router';
 
 const mutations = <MutationTree<MapModuleState>>{
     [TOGGLE_ADD_MODE]: state => {
@@ -63,11 +65,14 @@ const actions = <ActionTree<MapModuleState, RootState>>{
             commit(TOGGLE_LOADING);
         }
     },
-    [ASYNC_GET_ALL_COORDINATES]: async ({ commit }) => {
+    [ASYNC_GET_ALL_COORDINATES]: async ({ commit }, id?: string) => {
         try {
             commit(SET_LOADING, true);
             const allMarkers = await API.map.getAllMarkers();
             commit(SET_COORDINATES, allMarkers);
+            if (id) {
+                commit(SET_SELECTED_MARKER_ID, id);
+            }
         } catch (error) {
             const errorMessage = error?.message;
             commit(SET_ERROR, { isError: true, message: errorMessage });
@@ -93,7 +98,11 @@ const actions = <ActionTree<MapModuleState, RootState>>{
                 .getMarkerByID({ id })
                 .then(marker => resolve(marker))
                 .catch(error => reject(error));
-        })
+        }),
+    [ASYNC_SET_SELECTED_MARKER_ID]: ({ commit }, id) => {
+        commit(SET_SELECTED_MARKER_ID, id);
+        router.replace({ query: { id } }).catch(() => {});
+    }
 };
 
 const getters = <GetterTree<MapModuleState, RootState>>{
