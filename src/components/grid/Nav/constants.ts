@@ -4,8 +4,8 @@ const { goToAbout, goToMap } = goToPath;
 const { map, about } = routesNames;
 
 export const navigationItems = [
-    { ...about, goTo: goToAbout, icon: 'mdi-information' },
-    { ...map, goTo: goToMap, icon: 'mdi-map ' }
+    { name: about.meta.title, goTo: goToAbout, icon: 'mdi-information' },
+    { name: map.meta.title, goTo: goToMap, icon: 'mdi-map ' }
 ];
 
 export const getItemIndexByName = (parameter: string | undefined | null): number | undefined =>

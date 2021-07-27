@@ -8,15 +8,24 @@ Vue.use(VueRouter);
 export const routesNames = {
     home: {
         path: '/',
-        name: 'Домашняя страница'
+        name: 'Home',
+        meta: {
+            title: 'Домашняя страница'
+        }
     },
     map: {
         path: '/map',
-        name: 'Карта'
+        name: 'Map',
+        meta: {
+            title: 'Карта'
+        }
     },
     about: {
         path: '/about',
-        name: 'О задании'
+        name: 'About',
+        meta: {
+            title: 'О задании'
+        }
     }
 };
 

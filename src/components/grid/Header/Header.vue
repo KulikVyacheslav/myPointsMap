@@ -21,7 +21,7 @@ export default Vue.extend({
     },
     computed: {
         pageName(): string {
-            return this.$route.name || defaultPageName;
+            return this.$route.meta.title || defaultPageName;
         }
     }
 });
